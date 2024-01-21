@@ -1,0 +1,27 @@
+name: Docker and EKS Deploy
+
+env:
+  weather_api_key: ${{ secrets.WEATHER_API_KEY }}
+  run: python app.py
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build Docker Image
+        run: docker build -t master099/devopspy .
+        # run: docker build --file Dockerfile .
+
+      - name: Push Docker Image
+        run: |
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker push master099/devopspy

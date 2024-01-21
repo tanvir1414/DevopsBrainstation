@@ -1,0 +1,9 @@
+secrets.js
+secrets.*
+secrets
+.env
+
+\.github\terraform\.terraform
+/.github/terraform/.terraform
+terraform.tfstate
+.terraform.lock

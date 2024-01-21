@@ -1,0 +1,10 @@
+name: Docker and EKS Deploy
+
+env:
+  weather_api_key: ${{ secrets.WEATHER_API_KEY }}
+  run: python app.py
+
+on:
+  release:
+    types:
+      - created
